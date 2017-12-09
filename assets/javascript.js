@@ -2,6 +2,8 @@ var searchTerm = "";
 var startYear = 0;
 var endYear = 0;
 var numRecords = 0;
+$(document).ready(function() {
+
 
 var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
 url += '?' + $.param({
@@ -20,10 +22,11 @@ $('clearBtn').on('click', function(){
 
 $.ajax({
   url: url,
-  method: 'GET',
+  method: "GET",
 }).done(function (result) {
     console.log(result);
   console.log(result.response.docs[0].headline);
 }).fail(function(err) {
   throw err;
+});
 });
