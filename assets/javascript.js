@@ -12,7 +12,10 @@ url += '?' + $.param({
 
 // start button
 $('#startBtn').on('click', function(){
-
+  searchTerm = $('#searchTerm').val().trim();
+  numRecords = $('#numRecords').val();
+  startYear = $('#startYear').val();
+  endYear = $('#endYear').val();
 });
 
 // clear button reloads DOM
@@ -23,10 +26,12 @@ $('clearBtn').on('click', function(){
 $.ajax({
   url: url,
   method: "GET",
-}).done(function (result) {
+  })
+  .done(function (result) {
     console.log(result);
-  console.log(result.response.docs[0].headline);
-}).fail(function(err) {
-  throw err;
-});
+    console.log(result.response.docs[0].headline);
+    })
+    .fail(function(err) {
+      throw err;
+    });
 });
